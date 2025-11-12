@@ -1,0 +1,16 @@
+name: Waka Readme  # 这个工作流的名字，会在 GitHub Actions 中看到
+
+on:
+  workflow_dispatch:  # 允许手动点击运行一次（调试非常有用）
+  schedule:
+    - cron: "0 0 * * *"  # 每天 0 点 UTC 自动运行（德国时间是凌晨 1 点）
+
+jobs:
+  update-readme:
+    name: WakaReadme DevMetrics  # 这个任务的名字
+    runs-on: ubuntu-latest       # 使用 GitHub 提供的 Linux 云主机
+
+    steps:
+      - uses: athul/waka-readme@master  # 使用别人写好的 GitHub Action
+        with:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}  # 使用你之前配置的密钥来访问你的 WakaTime 数据
