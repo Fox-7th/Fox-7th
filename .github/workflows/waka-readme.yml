@@ -1,16 +1,36 @@
-name: Waka Readme  # 这个工作流的名字，会在 GitHub Actions 中看到
+name: Waka Readme
 
 on:
-  workflow_dispatch:  # 允许手动点击运行一次（调试非常有用）
+  workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"  # 每天 0 点 UTC 自动运行（德国时间是凌晨 1 点）
+    - cron: "0 0 * * *"  # 每天 0 点 UTC 自动运行
 
 jobs:
   update-readme:
-    name: WakaReadme DevMetrics  # 这个任务的名字
-    runs-on: ubuntu-latest       # 使用 GitHub 提供的 Linux 云主机
+    name: WakaReadme DevMetrics
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: athul/waka-readme@master  # 使用别人写好的 GitHub Action
+      - uses: athul/waka-readme@master
         with:
-          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}  # 使用你之前配置的密钥来访问你的 WakaTime 数据
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+
+          ### 内容设置 ###
+          SHOW_TITLE: true
+          SECTION_NAME: waka  # 对应你的 README 中的占位符
+          BLOCKS: ░▒▓█
+          TIME_RANGE: last_7_days
+          LANG_COUNT: 8
+          SHOW_TIME: true
+          SHOW_TOTAL: true
+          STOP_AT_OTHER: true
+          IGNORED_LANGUAGES: JSON TOML Binary
+
+          ### 提交行为 ###
+          COMMIT_MESSAGE: 📊 Update WakaTime stats
+          TARGET_BRANCH: main
+          TARGET_PATH: README.md
+          COMMITTER_NAME: WakaTimeBot
+          COMMITTER_EMAIL: bot@wakatime.dev
+          AUTHOR_NAME: Fox-7th
+          AUTHOR_EMAIL: fox@wakatime.dev
