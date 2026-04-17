@@ -1,4 +1,4 @@
-### ⏱️ My Coding Stats Since Nov.01.2025
+### ⏱️ My Coding Stats Since Some Time
 
 ![WakaTime Stats](https://github-readme-stats.vercel.app/api/wakatime?username=7thFox&layout=compact&theme=transparent)
 
